@@ -1,0 +1,155 @@
+---
+import { getCollection } from "astro:content";
+import PostPreviewCard from "../components/PostPreviewCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  experience,
+  focusAreas,
+  professionalSummary,
+  selectedProjects,
+  siteMeta
+} from "../data/profile";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const latestPosts = posts.slice(0, 3);
+const spotlightProjects = selectedProjects.slice(0, 3);
+---
+
+<BaseLayout
+  title="Reza Ghalavand"
+  description="Senior Software Engineer focused on backend architecture, enterprise systems, and practical AI applications."
+>
+  <section class="container hero reveal" style="--delay: 90ms">
+    <div class="hero-copy">
+      <p class="eyebrow">Senior Software Engineer</p>
+      <h1 class="hero-title">Backend and enterprise systems engineer building practical AI applications.</h1>
+      <p class="hero-subtitle">{professionalSummary}</p>
+      <div class="hero-actions">
+        <a class="button button--primary" href="/projects">View projects</a>
+        <a class="button button--ghost" href="/blog">Read blog</a>
+        <a class="button button--ghost" href={siteMeta.resumePath} target="_blank" rel="noreferrer">
+          Download resume
+        </a>
+      </div>
+      <p class="profile-note">
+        LinkedIn: {siteMeta.linkedin.replace("https://", "")} | GitHub: {siteMeta.github.replace("https://", "")}
+      </p>
+    </div>
+
+    <figure class="profile-frame">
+      <img
+        src="/assets/images/profile.jpg"
+        alt="Professional portrait of Reza Ghalavand"
+        class="profile-image"
+        loading="eager"
+      />
+      <figcaption class="profile-note">
+        Currently focused on LLMs, RAG, LangGraph, and Python-driven enterprise automation.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="container section">
+    <div class="stat-strip">
+      <article class="stat-item reveal" style="--delay: 140ms">
+        <strong>15+ Years</strong>
+        <span>Enterprise software delivery</span>
+      </article>
+      <article class="stat-item reveal" style="--delay: 220ms">
+        <strong>6 Repositories</strong>
+        <span>Applied AI and backend systems</span>
+      </article>
+      <article class="stat-item reveal" style="--delay: 300ms">
+        <strong>3 Active Domains</strong>
+        <span>AI systems, ERP workflows, platform engineering</span>
+      </article>
+      <article class="stat-item reveal" style="--delay: 380ms">
+        <strong>{posts.length} Articles</strong>
+        <span>Technical writing from 2024 to present</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Current focus"
+      title="What I am building and improving"
+      description="I prioritize production reliability, maintainability, and measurable business outcomes in every system I ship."
+    />
+    <div class="card-grid">
+      {focusAreas.map((item, index) => (
+        <article class="competency-card reveal" style={`--delay: ${180 + index * 80}ms`}>
+          <h3>{item}</h3>
+          <p>
+            Delivery strategy balances architecture quality, operational excellence, and long-term maintainability.
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Selected projects"
+      title="Open-source work"
+      description="A portfolio focused on pragmatic AI engineering, governance, and enterprise backend systems."
+    />
+    <div class="card-grid">
+      {spotlightProjects.map((project, index) => (
+        <div style={`--delay: ${160 + index * 70}ms`}>
+          <ProjectCard {...project} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Recent writing"
+      title="Practical notes from real systems"
+      description="Writing focused on architecture trade-offs, AI integration patterns, and operational reliability."
+    />
+    <div class="card-grid">
+      {latestPosts.map((post, index) => (
+        <div style={`--delay: ${160 + index * 70}ms`}>
+          <PostPreviewCard
+            title={post.data.title}
+            description={post.data.description}
+            href={`/blog/${post.id}`}
+            date={post.data.publishedAt}
+            readingTime={post.data.readingTime}
+            tags={post.data.tags}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Professional experience"
+      title="Career highlights"
+      description="A condensed timeline from resume responsibilities across enterprise systems and software delivery."
+    />
+    <ol class="timeline reveal" style="--delay: 180ms">
+      {experience.map((entry) => (
+        <li>
+          <h3>{entry.title}</h3>
+          <p class="period">
+            {entry.company} | {entry.period}
+          </p>
+          <ul>
+            {entry.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>

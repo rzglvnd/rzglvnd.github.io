@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date: Date;
+  readingTime: string;
+  tags: string[];
+}
+
+const { title, description, href, date, readingTime, tags } = Astro.props;
+
+const publishedLabel = new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "short",
+  day: "2-digit"
+}).format(date);
+---
+
+<article class="post-card reveal" style="--delay: 180ms">
+  <p class="post-date">{publishedLabel} · {readingTime}</p>
+  <h3>
+    <a href={href}>{title}</a>
+  </h3>
+  <p>{description}</p>
+  <ul class="chip-list" aria-label={`${title} tags`}>
+    {tags.map((tag) => (
+      <li class="chip">{tag}</li>
+    ))}
+  </ul>
+</article>

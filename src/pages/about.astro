@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  competencies,
+  education,
+  experience,
+  professionalSummary,
+  siteMeta
+} from "../data/profile";
+---
+
+<BaseLayout
+  title="About"
+  description="Professional profile of Reza Ghalavand, Senior Software Engineer specialized in backend and enterprise systems."
+>
+  <section class="container hero reveal" style="--delay: 120ms">
+    <div class="hero-copy">
+      <p class="eyebrow">About</p>
+      <h1 class="hero-title">Reza Ghalavand</h1>
+      <p class="hero-subtitle">Senior Software Engineer | Backend and Enterprise Systems | AI Applications</p>
+      <p>{professionalSummary}</p>
+      <div class="hero-actions">
+        <a class="button button--primary" href={siteMeta.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="button button--ghost" href={siteMeta.github} target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+    <figure class="profile-frame">
+      <img
+        src="/assets/images/profile.jpg"
+        alt="Reza Ghalavand portrait"
+        class="profile-image"
+        loading="lazy"
+      />
+      <figcaption class="profile-note">Email: {siteMeta.email}</figcaption>
+    </figure>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Core competencies"
+      title="Technical strengths"
+      description="Hands-on across software engineering, data platforms, and enterprise AI enablement."
+    />
+    <div class="card-grid">
+      {competencies.map((group, index) => (
+        <article class="competency-card reveal" style={`--delay: ${160 + index * 55}ms`}>
+          <h3>{group.category}</h3>
+          <ul class="chip-list" aria-label={`${group.category} skills`}>
+            {group.items.map((item) => (
+              <li class="chip">{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading
+      overline="Experience"
+      title="Professional timeline"
+      description="Resume-backed roles focused on enterprise operations, software modernization, and AI-enhanced automation."
+    />
+    <ol class="timeline reveal" style="--delay: 180ms">
+      {experience.map((entry) => (
+        <li>
+          <h3>{entry.title}</h3>
+          <p class="period">
+            {entry.company} | {entry.period}
+          </p>
+          <ul>
+            {entry.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container section reveal" style="--delay: 220ms">
+    <SectionHeading overline="Education" title={education.degree} description={education.institution} />
+  </section>
+</BaseLayout>

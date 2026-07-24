@@ -1,0 +1,109 @@
+---
+import "../styles/global.css";
+import { siteMeta } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = siteMeta.title,
+  description = siteMeta.description,
+  image = "/assets/images/profile.jpg"
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const pageTitle = title === siteMeta.title ? title : `${title} | ${siteMeta.title}`;
+const canonical = new URL(pathname, siteMeta.siteUrl).toString();
+const ogImage = image.startsWith("http") ? image : new URL(image, siteMeta.siteUrl).toString();
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" }
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="alternate" type="application/rss+xml" title="Reza Ghalavand Blog RSS" href="/rss.xml" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="ambient-layer" aria-hidden="true">
+      <span class="ambient ambient-a"></span>
+      <span class="ambient ambient-b"></span>
+      <span class="ambient ambient-c"></span>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="brand-mark" aria-label="Go to homepage">
+          <span>RG</span>
+          <small>Reza Ghalavand</small>
+        </a>
+        <nav aria-label="Primary navigation" class="primary-nav">
+          <ul>
+            {navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class={
+                    pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href))
+                      ? "active"
+                      : undefined
+                  }
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a class="button button--compact" href={siteMeta.resumePath} target="_blank" rel="noreferrer">
+          Resume
+        </a>
+      </div>
+    </header>
+
+    <main id="content" class="page-shell">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          © {currentYear} Reza Ghalavand. Built with Astro and published as open source.
+        </p>
+        <div class="footer-links">
+          <a href={siteMeta.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={siteMeta.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/blog">Blog</a>
+          <a href="/rss.xml">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

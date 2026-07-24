@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page not found" description="The page you requested could not be found.">
+  <section class="container section reveal" style="--delay: 120ms">
+    <p class="eyebrow">404</p>
+    <h1>Page not found</h1>
+    <p class="hero-subtitle">
+      The page may have moved, or the URL may be incorrect. You can return to the homepage or browse the latest blog posts.
+    </p>
+    <div class="hero-actions">
+      <a class="button button--primary" href="/">Go to homepage</a>
+      <a class="button button--ghost" href="/blog">Browse blog</a>
+    </div>
+  </section>
+</BaseLayout>

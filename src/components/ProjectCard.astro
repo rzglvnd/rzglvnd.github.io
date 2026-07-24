@@ -1,0 +1,23 @@
+---
+interface Props {
+  name: string;
+  href: string;
+  summary: string;
+  stack: readonly string[];
+}
+
+const { name, href, summary, stack } = Astro.props;
+---
+
+<article class="project-card reveal" style="--delay: 160ms">
+  <div>
+    <h3>{name}</h3>
+    <p>{summary}</p>
+  </div>
+  <ul class="chip-list" aria-label={`${name} stack`}>
+    {stack.map((item) => (
+      <li class="chip">{item}</li>
+    ))}
+  </ul>
+  <a class="text-link" href={href} target="_blank" rel="noreferrer">View repository</a>
+</article>

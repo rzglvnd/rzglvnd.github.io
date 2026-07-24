@@ -1,0 +1,8 @@
+node_modules/
+.astro/
+dist/
+.DS_Store
+.vscode/
+.env
+.env.*
+!.env.example

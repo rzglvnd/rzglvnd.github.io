@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { siteMeta } from "../data/profile";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Reza Ghalavand for backend architecture, enterprise software, and AI application engineering collaborations."
+>
+  <section class="container section">
+    <SectionHeading
+      overline="Contact"
+      title="Open to technical collaboration"
+      description="I am available for conversations around backend architecture, enterprise platform modernization, and practical AI systems design."
+    />
+
+    <div class="contact-grid">
+      <article class="contact-card reveal" style="--delay: 150ms">
+        <h3>Email</h3>
+        <p>For direct technical discussions and project opportunities.</p>
+        <a class="text-link" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+      </article>
+      <article class="contact-card reveal" style="--delay: 220ms">
+        <h3>LinkedIn</h3>
+        <p>Professional updates, network connections, and engineering context.</p>
+        <a class="text-link" href={siteMeta.linkedin} target="_blank" rel="noreferrer">
+          linkedin.com/in/rzglvnd
+        </a>
+      </article>
+      <article class="contact-card reveal" style="--delay: 290ms">
+        <h3>GitHub</h3>
+        <p>Open-source repositories and implementation-focused documentation.</p>
+        <a class="text-link" href={siteMeta.github} target="_blank" rel="noreferrer">
+          github.com/rzglvnd
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section reveal" style="--delay: 210ms">
+    <div class="notice">
+      <p>
+        Resume PDF: <a class="text-link" href={siteMeta.resumePath} target="_blank" rel="noreferrer">Download current resume</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

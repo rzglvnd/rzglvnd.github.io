@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostPreviewCard from "../../components/PostPreviewCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const featured = posts.filter((post) => post.data.featured);
+const recent = posts.filter((post) => !post.data.featured);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Technical writing by Reza Ghalavand covering backend systems, enterprise architecture, and practical AI delivery."
+>
+  <section class="container section">
+    <SectionHeading
+      overline="Blog"
+      title="Engineering notes from production work"
+      description="Posts are focused on practical implementation details, architecture trade-offs, and operational outcomes."
+    />
+  </section>
+
+  {featured.length > 0 && (
+    <section class="container section">
+      <SectionHeading overline="Featured" title="Recommended reading" />
+      <div class="card-grid">
+        {featured.map((post, index) => (
+          <div style={`--delay: ${150 + index * 70}ms`}>
+            <PostPreviewCard
+              title={post.data.title}
+              description={post.data.description}
+              href={`/blog/${post.id}`}
+              date={post.data.publishedAt}
+              readingTime={post.data.readingTime}
+              tags={post.data.tags}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="container section">
+    <SectionHeading overline="All posts" title="Archive" />
+    <div class="card-grid">
+      {recent.map((post, index) => (
+        <div style={`--delay: ${140 + index * 60}ms`}>
+          <PostPreviewCard
+            title={post.data.title}
+            description={post.data.description}
+            href={`/blog/${post.id}`}
+            date={post.data.publishedAt}
+            readingTime={post.data.readingTime}
+            tags={post.data.tags}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
