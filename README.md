@@ -88,6 +88,8 @@ This repository includes a GitHub Actions workflow at `.github/workflows/deploy-
 - Resume information and profile facts should be updated in src/data/profile.ts.
 - Blog content should remain implementation-focused and experience-backed.
 - Keep project descriptions aligned with corresponding GitHub repositories.
+- Keep the website curated for professional depth: publish substantive engineering insights and evidence-backed accomplishments, not daily study updates or introductory tutorials.
+- Small experimental repositories may receive a concise supporting link on the Projects page. Promote them to featured projects or articles only when their results justify it; describe current scope without implying production use or unmeasured performance.
 
 ## Domain and deployment
 
