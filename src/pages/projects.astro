@@ -1,4 +1,5 @@
 ---
+import AIPortfolioExplorer from "../components/AIPortfolioExplorer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
@@ -6,17 +7,19 @@ import { selectedProjects } from "../data/profile";
 ---
 
 <BaseLayout
-  title="Projects"
-  description="Selected open-source repositories by Reza Ghalavand covering backend engineering and practical AI systems."
+  pageClass="portfolio-page"
+  title="AI Portfolio Explorer"
+  description="Explore Reza Ghalavand’s AI case studies, architectures, and technologies. Compare work across RAG, agents, evaluation, backend engineering, and ops."
 >
+  <AIPortfolioExplorer />
   <section class="container section">
     <SectionHeading
-      overline="Projects"
-      title="Portfolio repositories"
-      description="Each repository is designed as a production-quality implementation with testing, documentation, and operational clarity."
+      overline="More engineering work"
+      title="Additional repositories"
+      description="Explore additional work across enterprise automation, analytics, and system design."
     />
     <div class="card-grid">
-      {selectedProjects.map((project, index) => (
+      {selectedProjects.slice(3).map((project, index) => (
         <div style={`--delay: ${140 + index * 70}ms`}>
           <ProjectCard {...project} />
         </div>

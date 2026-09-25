@@ -74,18 +74,21 @@ export const experience = [
 export const selectedProjects = [
   {
     name: "AI Systems Notes",
+    caseStudyHref: "/projects/?project=notes",
     href: "https://github.com/rzglvnd/ai-systems-notes",
     summary: "Open-source knowledge base for practical AI engineering.",
     stack: ["MkDocs", "Python", "AI Systems"]
   },
   {
     name: "LangGraph Governance Lab",
+    caseStudyHref: "/projects/?project=governance",
     href: "https://github.com/rzglvnd/langgraph-governance-lab",
     summary: "Research repository exploring governance and orchestration patterns.",
     stack: ["FastAPI", "LangGraph", "Governance"]
   },
   {
     name: "Local LLM Chat Engine",
+    caseStudyHref: "/projects/?project=engine",
     href: "https://github.com/rzglvnd/local-llm-chat-engine",
     summary: "Production-oriented local LLM platform with modular architecture.",
     stack: ["FastAPI", "RAG", "Python"]

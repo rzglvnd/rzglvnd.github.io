@@ -1,0 +1,48 @@
+---
+import "../styles/ai-portfolio.css";
+import { projects } from "../../public/assets/ai-portfolio/projects.js";
+---
+<div class="ai-explorer">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> SOFTWARE ENGINEER → APPLIED AI</div>
+        <h1 id="hero-title">Good AI starts<br>with <span>good systems.</span></h1>
+        <p class="hero-description">I bring a backend engineer’s discipline to AI.<br class="desktop-break"> Explore how I approach retrieval, agent governance,<br class="desktop-break"> and the systems that make them dependable.</p>
+        <div class="hero-actions"><a class="button primary" href="#explorer">Explore the work <span>↓</span></a><span class="hero-note">3 projects. From principles to implementation.</span></div>
+        <div class="hero-footnote"><span>PYTHON</span><i>/</i><span>RAG</span><i>/</i><span>AGENT GOVERNANCE</span><i>/</i><span>SYSTEMS THINKING</span></div>
+      </div>
+      <div class="system-map" aria-label="Portfolio overview">
+        <div class="map-top"><span><i></i> SYSTEM OVERVIEW</span><span>v.01</span></div>
+        <div class="map-heading">One engineering practice.<br><span>Three connected perspectives.</span></div>
+        <div class="map-grid">
+          <button class="map-node map-notes" data-project="notes"><span class="node-code">01 / KNOWLEDGE</span><strong>AI Systems Notes</strong><span class="node-description">The engineering playbook <b>↗</b></span></button>
+          <div class="map-connector" aria-hidden="true"><span>INFORM</span><i></i></div>
+          <div class="map-bottom">
+            <button class="map-node map-gov" data-project="governance"><span class="node-code">02 / CONTROL</span><strong>Governance Lab</strong><span class="node-description">Evaluate agent runs <b>↗</b></span></button>
+            <button class="map-node map-llm" data-project="engine"><span class="node-code">03 / APPLICATION</span><strong>Local LLM Engine</strong><span class="node-description">Retrieve & generate <b>↗</b></span></button>
+          </div>
+        </div>
+        <div class="map-footer"><span>CONCEPTUAL RELATIONSHIP</span><span>SELECT A PROJECT ↗</span></div>
+      </div>
+    </section>
+    <section class="explorer-section" id="explorer" aria-labelledby="explorer-title">
+      <div class="container">
+        <div class="section-heading"><div><div class="eyebrow">01 / PROJECT EXPLORER</div><h2 id="explorer-title">Find the work that fits.</h2></div><div class="view-switch" role="group" aria-label="Explorer view"><button data-view="projects" aria-pressed="true"><span>▦</span> Projects</button><button data-view="compare" aria-pressed="false"><span>⇄</span> Compare <span id="compare-count">3</span></button></div></div>
+        <div class="filter-row"><div id="filters" class="filters" role="group" aria-label="Filter projects by strength"></div><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="project-search" type="search" placeholder="Search work or technology" aria-label="Search projects or technologies"></label></div>
+        <div class="results-line"><span id="result-status" role="status" aria-live="polite"></span><button id="clear-filters" class="text-button" hidden>Clear filters ×</button><span class="source-note">Repository-based case studies <span>·</span> September 2026</span></div>
+        <div id="project-grid" class="project-grid">{projects.map(project => (<article class="project-card" data-card={project.id}><div class="card-body"><div class="card-kicker">{project.kind}</div><h3>{project.name}</h3><p class="card-description">{project.summary}</p><p>{project.problem}</p><div class="tags">{project.technologies.map(technology => <span class="tag">{technology}</span>)}</div><p>{project.current}</p><div class="card-bottom"><button class="case-button" data-project={project.id}>Read case study ↗</button><a href={project.repo} target="_blank" rel="noopener noreferrer">Repository ↗</a></div></div></article>))}</div>
+        <div id="comparison" hidden></div>
+        <div id="empty-state" class="empty-state" hidden><span>⌕</span><h3>No projects match yet.</h3><p>Try “Python”, choose another strength, or reset the filters.</p><button class="button secondary" id="reset-empty">Reset filters</button></div>
+      </div>
+    </section>
+    <section class="approach container" aria-labelledby="approach-title">
+      <div class="approach-heading"><div class="eyebrow">02 / THE COMMON THREAD</div><h2 id="approach-title">Engineering beyond<br>the model.</h2><a href="/about">More about my work <span>↗</span></a></div>
+      <div class="approach-item"><span class="approach-icon">&#123; &#125;</span><h3>Explicit boundaries</h3><p>Separate retrieval, generation, and policy decisions so each can be understood and improved.</p></div>
+      <div class="approach-item"><span class="approach-icon">✓</span><h3>Inspectable behavior</h3><p>Make decisions visible through deterministic checks, evaluation, and clear technical documentation.</p></div>
+      <div class="approach-item"><span class="approach-icon">↺</span><h3>Operational thinking</h3><p>Consider health checks, persistence, configuration, and failure paths alongside the core feature.</p></div>
+    </section>
+
+  <dialog id="case-dialog" aria-labelledby="case-title"><div class="dialog-toolbar"><span id="case-index"></span><button class="close-dialog" aria-label="Close case study">Close <span>×</span></button></div><div id="case-content"></div></dialog>
+<noscript><p class="container">Enable JavaScript for project filtering, comparison, and interactive architecture diagrams. The case-study summaries and repository links above remain available.</p></noscript>
+</div>
+<script is:inline type="module" src="/assets/ai-portfolio/app.js"></script>

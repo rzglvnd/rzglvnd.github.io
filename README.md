@@ -102,3 +102,24 @@ The site is static and can be deployed on any static host such as GitHub Pages, 
 ## License
 
 MIT License.
+
+## Interactive AI portfolio
+
+The `/projects/` page includes an interactive explorer for AI Systems Notes,
+LangGraph Governance Lab, and Local LLM Chat Engine. Visitors can filter by
+engineering strength, search technologies, compare selected projects, and inspect
+architecture components. Homepage project cards link to individual case studies.
+
+- UI: `src/components/AIPortfolioExplorer.astro`
+- Scoped styles: `src/styles/ai-portfolio.css`
+- Shared server/client case-study data: `public/assets/ai-portfolio/projects.js`
+- Browser interactions: `public/assets/ai-portfolio/app.js`
+
+The page uses the shared Astro layout, canonical/social metadata, and sitemap.
+Case-study summaries and repository links are rendered at build time so they
+remain readable without JavaScript. Private-preview labels and indexing blocks
+from the original standalone preview are not included. Existing additional
+repositories remain below the explorer.
+
+Inter is self-hosted as WOFF subsets under the included SIL Open Font License.
+The explorer's styling is scoped to avoid changing other pages.

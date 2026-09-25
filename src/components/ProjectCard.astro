@@ -1,12 +1,13 @@
 ---
 interface Props {
   name: string;
+  caseStudyHref?: string;
   href: string;
   summary: string;
   stack: readonly string[];
 }
 
-const { name, href, summary, stack } = Astro.props;
+const { name, href, summary, stack, caseStudyHref } = Astro.props;
 ---
 
 <article class="project-card reveal" style="--delay: 160ms">
@@ -19,5 +20,11 @@ const { name, href, summary, stack } = Astro.props;
       <li class="chip">{item}</li>
     ))}
   </ul>
+  <div class="project-links">
+  {caseStudyHref && <a class="text-link" href={caseStudyHref}>Explore case study</a>}
   <a class="text-link" href={href} target="_blank" rel="noreferrer">View repository</a>
+  </div>
 </article>
+<style>
+.project-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; }
+</style>

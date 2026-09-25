@@ -6,12 +6,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  pageClass?: string;
 }
 
 const {
   title = siteMeta.title,
   description = siteMeta.description,
-  image = "/assets/images/profile-new.png"
+  image = "/assets/images/profile-new.png",
+  pageClass = ""
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -50,7 +52,7 @@ const currentYear = new Date().getFullYear();
     <link rel="alternate" type="application/rss+xml" title="Reza Ghalavand Blog RSS" href="/rss.xml" />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body class={pageClass}>
     <a class="skip-link" href="#content">Skip to content</a>
     <div class="ambient-layer" aria-hidden="true">
       <span class="ambient ambient-a"></span>
