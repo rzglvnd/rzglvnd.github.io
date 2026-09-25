@@ -95,3 +95,6 @@ export const projects = [
     links: [['Readme', ''], ['Architecture', '/blob/main/docs/architecture.md'], ['Adapters & streaming', '/blob/main/docs/adapters.md'], ['Operations', '/blob/main/docs/operations.md']]
   }
 ];
+
+// Present executable application evidence before the supporting handbook.
+projects.sort((a, b) => ['engine', 'governance', 'notes'].indexOf(a.id) - ['engine', 'governance', 'notes'].indexOf(b.id));

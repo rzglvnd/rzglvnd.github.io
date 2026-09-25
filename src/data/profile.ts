@@ -1,9 +1,9 @@
 export const siteMeta = {
   title: "Reza Ghalavand",
-  role: "Senior Software Engineer",
-  tagline: "Backend and Enterprise Systems | AI Applications",
+  role: "Applied AI Engineer",
+  tagline: "LLM Systems · RAG · Agents · Evaluation · Python · AI Infrastructure",
   description:
-    "Personal website of Reza Ghalavand focused on enterprise backend engineering, practical AI systems, and technical writing.",
+    "Reza Ghalavand, Applied AI Engineer building Python LLM systems, RAG, and agent evaluation tools, backed by 15+ years of software engineering.",
   siteUrl: "https://rzglvnd.github.io",
   email: "rzglvnd@gmail.com",
   linkedin: "https://linkedin.com/in/rzglvnd",
@@ -12,40 +12,21 @@ export const siteMeta = {
 };
 
 export const professionalSummary =
-  "Senior Software Engineer with 15+ years of experience delivering enterprise software, backend systems, ERP solutions, and SQL Server administration. Experienced in designing maintainable systems, modernizing legacy applications, and automating operational workflows. Currently focused on applying Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), LangGraph, and Python to build practical AI-powered software for enterprise environments.";
+  "Applied AI Engineer building LLM applications, retrieval pipelines, and agent governance tools in Python. I bring 15+ years of software, backend, and database experience to making AI systems testable, maintainable, and ready for operational scrutiny.";
 
 export const competencies = [
-  {
-    category: "Languages",
-    items: ["Python", "C#", "C++", "PHP"]
-  },
-  {
-    category: "Backend",
-    items: [".NET", "FastAPI", "REST APIs"]
-  },
-  {
-    category: "Databases",
-    items: ["SQL Server", "PostgreSQL", "Redis"]
-  },
-  {
-    category: "AI",
-    items: ["LLMs", "RAG", "LangGraph", "LangChain", "Prompt Engineering"]
-  },
-  {
-    category: "Infrastructure",
-    items: ["Docker", "Git", "Linux", "Kubernetes"]
-  },
-  {
-    category: "Domains",
-    items: ["Enterprise Software", "ERP", "Database Administration"]
-  }
+  { category: "Applied AI", items: ["LLMs", "RAG", "Agent governance", "LangGraph", "LangChain", "Prompt Engineering", "Policy evaluation"] },
+  { category: "AI and Backend Engineering", items: ["Python", "FastAPI", "REST APIs", "pytest", "Backend architecture"] },
+  { category: "Data and Retrieval", items: ["Embeddings", "FAISS", "TF-IDF", "SQL Server", "PostgreSQL", "Redis"] },
+  { category: "Infrastructure and Delivery", items: ["Docker", "Git", "GitHub Actions", "Linux", "Kubernetes"] },
+  { category: "Software Engineering Foundation", items: [".NET", "C#", "C++", "PHP", "Enterprise systems"] }
 ] as const;
 
 export const experience = [
   {
     title: "Senior IT Systems Engineer",
     company: "Esfahan Regional Electric Company",
-    period: "Current",
+    period: "2025-Present",
     highlights: [
       "Support enterprise IT systems, backend infrastructure, automation initiatives, and mission-critical software operations."
     ]
@@ -73,25 +54,25 @@ export const experience = [
 
 export const selectedProjects = [
   {
-    name: "AI Systems Notes",
-    caseStudyHref: "/projects/?project=notes",
-    href: "https://github.com/rzglvnd/ai-systems-notes",
-    summary: "Open-source knowledge base for practical AI engineering.",
-    stack: ["MkDocs", "Python", "AI Systems"]
+    name: "Local LLM Chat Engine",
+    caseStudyHref: "/projects/?project=engine",
+    href: "https://github.com/rzglvnd/local-llm-chat-engine",
+    summary: "Modular Python RAG backend with ingestion, optional embeddings/FAISS retrieval, TF-IDF snapshots, API/CLI access, and local or hosted model adapters.",
+    stack: ["FastAPI", "RAG", "Python"]
   },
   {
     name: "LangGraph Governance Lab",
     caseStudyHref: "/projects/?project=governance",
     href: "https://github.com/rzglvnd/langgraph-governance-lab",
-    summary: "Research repository exploring governance and orchestration patterns.",
-    stack: ["FastAPI", "LangGraph", "Governance"]
+    summary: "FastAPI service evaluating agent traces against tool, approval, model, and budget policies. Deterministic findings with optional LLM remediation advice.",
+    stack: ["Python", "FastAPI", "Policy evaluation"]
   },
   {
-    name: "Local LLM Chat Engine",
-    caseStudyHref: "/projects/?project=engine",
-    href: "https://github.com/rzglvnd/local-llm-chat-engine",
-    summary: "Production-oriented local LLM platform with modular architecture.",
-    stack: ["FastAPI", "RAG", "Python"]
+    name: "AI Systems Notes",
+    caseStudyHref: "/projects/?project=notes",
+    href: "https://github.com/rzglvnd/ai-systems-notes",
+    summary: "Versioned engineering handbook covering LLM architecture, retrieval, evaluation, security, and operations. Reference patterns are distinguished from runtime implementations.",
+    stack: ["MkDocs", "Python", "AI Systems"]
   },
   {
     name: "ERP AI Assistant",
@@ -119,7 +100,7 @@ export const education = {
 };
 
 export const focusAreas = [
-  "Production-ready AI services for enterprise use cases",
+  "LLM services with explicit operational boundaries",
   "Agent governance, safety controls, and evaluation workflows",
   "LLM and RAG integration patterns for backend systems",
   "Reliable APIs, observability, and operational excellence"

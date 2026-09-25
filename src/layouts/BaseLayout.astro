@@ -12,7 +12,7 @@ interface Props {
 const {
   title = siteMeta.title,
   description = siteMeta.description,
-  image = "/assets/images/profile-new.png",
+  image = "/assets/images/profile-img.jpg",
   pageClass = ""
 } = Astro.props;
 
@@ -23,7 +23,7 @@ const ogImage = image.startsWith("http") ? image : new URL(image, siteMeta.siteU
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
+  { href: "/projects", label: "AI Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
