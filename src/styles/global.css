@@ -565,6 +565,20 @@ img {
   padding-left: 1.2rem;
 }
 
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose th,
+.prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0.4rem;
+  vertical-align: top;
+}
+
 .prose code {
   font-family: "JetBrains Mono", monospace;
   background: #e3f2e7;
