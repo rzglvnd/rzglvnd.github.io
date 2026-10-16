@@ -4,6 +4,7 @@ import PostPreviewCard from "../components/PostPreviewCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/research.css";
 import {
   experience,
   focusAreas,
@@ -110,6 +111,17 @@ const spotlightProjects = selectedProjects.slice(0, 3);
   </section>
 
 
+
+  <section class="container section" aria-labelledby="home-research-title">
+    <div class="home-research">
+      <div>
+        <p class="eyebrow">Independent research · Number theory</p>
+        <h2 id="home-research-title">Goldbach & the geometry of primes</h2>
+        <p>An open research notebook developed with ChatGPT Codex. Explore prime pairs, alternative number coordinates, and dated research milestones.</p>
+      </div>
+      <a class="button button--primary" href="/research/goldbach/">Explore the research ↗</a>
+    </div>
+  </section>
 
   <section class="container section">
     <SectionHeading

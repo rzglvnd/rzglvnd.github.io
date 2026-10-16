@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { research, milestones } from "../../data/goldbach";
+import { ulamPoints } from "../../lib/primes";
+import "../../styles/research.css";
+const dots = ulamPoints(35);
+const updatedLabel = new Intl.DateTimeFormat("en-GB", {day:"2-digit",month:"short",year:"numeric",timeZone:"UTC"}).format(new Date(research.updated));
+---
+<BaseLayout title="Research" description="An open research notebook by Reza Ghalavand: Goldbach’s conjecture, prime geometry, and experiments developed with ChatGPT Codex." pageClass="research-page">
+  <div class="container research-index">
+    <p class="r-kicker">Independent research / Reza Ghalavand</p>
+    <h1>Questions worth<br />staying with.</h1>
+    <p class="r-lede">An open notebook for mathematical ideas, computational experiments, and the patient work of understanding.</p>
+    <a class="research-feature" href="/research/goldbach/">
+      <div>
+        <span class="r-status"><i></i> {research.phase}</span>
+        <h2>Goldbach &<br /><em>the geometry of primes.</em></h2>
+        <p>Changing how we represent numbers to see their relationships more clearly. Follow a research program developed with ChatGPT Codex.</p>
+        <span class="r-feature-meta">Number theory · {milestones.length} notebook entries · Updated {updatedLabel}</span>
+        <span class="r-link">Enter the research notebook <span aria-hidden="true">↗</span></span>
+      </div>
+      <svg viewBox="-180 -180 360 360" role="img" aria-label="Ulam spiral showing primes among the first 1,225 integers">
+        {dots.map(p => <circle cx={p.x * 9} cy={p.y * 9} r="2.2" fill="currentColor" />)}
+      </svg>
+    </a>
+    <p class="r-small">A record of the work as it develops. Constructions, computational observations, and proofs are labeled according to their evidence.</p>
+  </div>
+</BaseLayout>

@@ -6,7 +6,8 @@ This project is a static Astro site designed to serve as a professional portfoli
 
 ## Highlights
 
-- Multi-page portfolio: Home, Projects, Blog, About, Contact
+- Multi-page portfolio: Home, Projects, Research, Blog, About, Contact
+- Goldbach research notebook with interactive prime experiments and dated milestones; see [the update guide](docs/research-notebook.md)
 - Resume-backed profile content
 - Markdown-driven blog with dated posts from 2024 to present
 - RSS feed and sitemap generation

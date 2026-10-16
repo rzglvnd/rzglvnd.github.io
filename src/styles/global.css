@@ -686,6 +686,10 @@ img {
 }
 
 @media (max-width: 980px) {
+  .brand-mark small {
+    display: none;
+  }
+
   .hero {
     grid-template-columns: 1fr;
   }
@@ -717,8 +721,13 @@ img {
 
   .header-inner {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0.7rem 0;
+  }
+
+  .primary-nav {
+    order: 3;
+    width: 100%;
   }
 
   .primary-nav ul {

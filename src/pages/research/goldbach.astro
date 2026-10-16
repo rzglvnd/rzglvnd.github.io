@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GoldbachLab from "../../components/GoldbachLab.astro";
+import { research, directions, milestones, references } from "../../data/goldbach";
+import { ulamPoints } from "../../lib/primes";
+import "../../styles/research.css";
+const dots = ulamPoints(49);
+const date = (value: string) => new Intl.DateTimeFormat("en", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(value));
+---
+<BaseLayout title="Goldbach & the Geometry of Primes" description="Reza Ghalavand’s research notebook on Goldbach’s conjecture and prime geometry, developed with ChatGPT Codex. Explore experiments, constructions, and dated progress." image="/assets/images/goldbach-social.png" pageClass="research-page">
+  <div class="container">
+    <div class="r-breadcrumb"><a href="/research/">Research</a><span aria-hidden="true">/</span><span>Notebook 001</span></div>
+    <section class="r-hero" aria-labelledby="research-title">
+      <div class="r-hero-copy">
+        <p class="r-kicker">Number theory / An open investigation</p>
+        <h1 id="research-title">Goldbach &<br />the geometry<br /><em>of primes.</em></h1>
+        <p class="r-lede">A simple question. An infinite frontier.<br />Exploring the structure of primes by changing the way we see numbers.</p>
+        <div class="r-hero-actions"><a class="r-primary" href="#experiments">Explore the experiments <span aria-hidden="true">↘</span></a><a class="r-link" href="#notebook">Read the notebook →</a></div>
+        <p class="r-byline">Research by <strong>Reza Ghalavand</strong><br />Developed in collaboration with ChatGPT Codex</p>
+      </div>
+      <figure class="r-spiral">
+        <div class="r-figure-label"><span>FIG. 01</span><span>THE ULAM SPIRAL</span></div>
+        <svg viewBox="-250 -250 500 500" role="img" aria-label={`Ulam spiral marking the ${dots.length} primes among integers 1 through 2,401`}>
+          <defs><radialGradient id="spiral-glow"><stop stop-color="#d7f8e5" stop-opacity=".1"/><stop offset="1" stop-color="#d7f8e5" stop-opacity="0"/></radialGradient></defs>
+          <circle r="245" fill="url(#spiral-glow)"/>
+          <g fill="none" stroke="#6c9f91" stroke-opacity=".18"><circle r="80"/><circle r="160"/><circle r="240"/><path d="M-245 0H245M0-245V245"/></g>
+          {dots.map(p => <circle cx={p.x * 9} cy={p.y * 9} r={p.n < 100 ? 2.6 : 1.9} fill={p.n < 100 ? "#e8c689" : "#9edcc3"}><title>Prime {p.n}</title></circle>)}
+          <circle r="5" fill="none" stroke="#e8c689"/>
+        </svg>
+        <figcaption><span>2,401 integers. {dots.length} primes.</span><span>Arithmetic, made visible.</span></figcaption>
+      </figure>
+    </section>
+    <div class="r-status-strip">
+      <span class="r-status"><i></i> {research.phase}</span>
+      <span>4 research directions</span><span>{milestones.length} recorded milestones</span>
+      <span>Updated <time datetime={research.updated}>{date(research.updated)}</time></span>
+    </div>
+    <nav class="r-section-nav" aria-label="Research sections"><a href="#question">The question</a><a href="#experiments">Experiments</a><a href="#directions">Research directions</a><a href="#notebook">Progress notebook</a><a href="#references">References</a></nav>
+
+    <section id="question" class="r-section r-question">
+      <div><p class="r-kicker">01 / The question</p><h2>Every even number.<br />Two primes.</h2></div>
+      <div><p class="r-body">The strong Goldbach conjecture asks whether every even integer greater than 2 can be written as the sum of two primes, allowing the two primes to be equal.</p>
+        <div class="r-equation" aria-label="For every even integer N at least 4, there exist primes p and q such that N equals p plus q"><span>N = p + q</span><small>N ≥ 4, N even; p, q prime</small></div>
+        <p class="r-body">For this project, the starting point is geometric: two primes adding to 2m sit at equal distances on opposite sides of m. What becomes visible when we change coordinates, distances, or operators?</p>
+        <p class="r-evidence"><strong>Current project status:</strong> exploratory constructions and exact reformulations. No proof of the binary conjecture is claimed. Finite computations below are demonstrations; published background results are credited in the references.</p>
+      </div>
+    </section>
+
+    <section id="experiments" class="r-section">
+      <div class="r-section-heading"><div><p class="r-kicker">02 / The experimental desk</p><h2>Get a feel for the arithmetic.</h2></div><p>Choose an even number. Inspect its prime pairs, change the geometry, and compare the counts.</p></div>
+      <GoldbachLab />
+    </section>
+
+    <section id="directions" class="r-section">
+      <div class="r-section-heading"><div><p class="r-kicker">03 / Research directions</p><h2>New views of an old problem.</h2></div><p>Four connected lines of inquiry from the research conversation. Each has a precise construction and a question still to answer.</p></div>
+      <div class="r-directions">{directions.map(d => <article id={d.id} class="r-direction"><div class="r-direction-meta"><span>{d.number}</span><span class="r-tag">{d.status}</span></div><h3>{d.title}</h3><p class="r-formula">{d.formula}</p><p>{d.text}</p><div class="r-open-question"><span>Open question</span><p>{d.question}</p></div></article>)}</div>
+      <p class="r-small r-direction-footnote">The compression scale s is positive. Ω counts prime factors with multiplicity. In divisibility coordinates, a number equal to the divisor itself remains prime. For the circle map, t ∈ ℝ and one point is omitted. Established ingredients are credited as such; novelty and usefulness require further investigation.</p>
+    </section>
+
+    <section id="notebook" class="r-section">
+      <div class="r-section-heading"><div><p class="r-kicker">04 / Progress notebook</p><h2>A record of the work.</h2></div><p>Milestones track what has been defined, checked, or proposed. Progress is recorded through evidence and open questions.</p></div>
+      <div class="r-next"><span class="r-kicker">Next investigation</span><p>{research.next}</p><span class="r-tag">Planned</span></div>
+      <ol class="r-notebook">{milestones.map((entry, i) => <li id={entry.id}><div class="r-entry-date"><time datetime={entry.date}>{date(entry.date)}</time><span>NOTE {String(milestones.length-i).padStart(3,"0")}</span></div><article><span class="r-tag">{entry.kind}</span><h3><a href={`#${entry.id}`}>{entry.title}</a></h3><p>{entry.summary}</p><details><summary>Read the mathematical note <span aria-hidden="true">+</span></summary><p>{entry.detail}</p></details></article></li>)}</ol>
+      <div class="r-method"><h3>Ambitious with ideas.<br /><em>Exacting with evidence.</em></h3><div><p>This notebook is curated from an ongoing research conversation with ChatGPT Codex. AI assists with constructions, computation, and critique; mathematical claims need explicit reasoning and review.</p><p>Observations, equivalent reformulations, and proofs have different evidential roles. New milestones should include their assumptions, supporting argument or reproducible computation, and remaining limitations.</p><a class="r-link" href="https://github.com/rzglvnd/rzglvnd.github.io/commits/main/src/data/goldbach.ts">View the notebook’s revision history ↗</a></div></div>
+    </section>
+
+    <section id="references" class="r-section">
+      <p class="r-kicker">05 / Reading & context</p><h2>Built on a long conversation.</h2>
+      <ol class="r-references">{references.map(ref => <li><a href={ref.url} target="_blank" rel="noreferrer">{ref.title} <span aria-hidden="true">↗</span></a><p>{ref.authors}</p><p class="r-small">{ref.note}</p></li>)}</ol>
+    </section>
+    <div class="r-end"><span class="r-kicker">The notebook continues.</span><a class="r-link" href="/research/">← All research</a></div>
+  </div>
+</BaseLayout>

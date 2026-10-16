@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#142d2a"/>
+  <g fill="none" stroke="#9edcc3" opacity=".15"><circle cx="1030" cy="310" r="260"/><circle cx="1030" cy="310" r="200"/><circle cx="1030" cy="310" r="140"/><path d="M740 310h460M1030 0v630"/></g>
+  <text x="80" y="110" fill="#9edcc3" font-family="monospace" font-size="18" letter-spacing="4">REZA GHALAVAND / RESEARCH NOTEBOOK 001</text>
+  <g fill="#f6f5ee" font-family="Georgia,serif" font-size="88"><text x="80" y="245">Goldbach &amp;</text><text x="80" y="345">the geometry</text><text x="80" y="445" fill="#9edcc3" font-style="italic">of primes.</text></g>
+  <text x="80" y="550" fill="#b2c7bd" font-family="sans-serif" font-size="22">An open investigation, developed with ChatGPT Codex.</text>
+</svg>

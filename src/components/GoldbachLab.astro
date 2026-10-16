@@ -1,0 +1,152 @@
+---
+import { goldbachPairs, primeSieve } from "../lib/primes";
+const initial = goldbachPairs(100, primeSieve(2000));
+---
+<div class="r-lab" id="prime-lab">
+  <div class="r-lab-top"><span class="r-kicker">Interactive experiment</span><span class="r-small">Computed in your browser · 4 ≤ N ≤ 2,000</span></div>
+  <div class="r-lab-tabs" role="tablist" aria-label="Experiment views">
+    <button type="button" role="tab" id="pairs-tab" aria-controls="pairs-panel" aria-selected="true" tabindex="0">01 / Prime pairs</button>
+    <button type="button" role="tab" id="geometry-tab" aria-controls="geometry-panel" aria-selected="false" tabindex="-1">02 / Bounded geometry</button>
+    <button type="button" role="tab" id="counts-tab" aria-controls="counts-panel" aria-selected="false" tabindex="-1">03 / Pair counts</button>
+  </div>
+  <div class="r-controls">
+    <label for="even-number">Even integer N <input type="number" id="even-number" min="4" max="2000" step="2" value="100" aria-describedby="number-error" /></label>
+    <input type="range" id="even-range" min="4" max="2000" step="2" value="100" aria-label="Choose an even integer" />
+    <button type="button" id="previous-even" aria-label="Previous even integer">−2</button>
+    <button type="button" id="next-even" aria-label="Next even integer">+2</button>
+  </div>
+  <p id="number-error" class="r-error" aria-live="polite"></p>
+  <div id="pairs-panel" role="tabpanel" aria-labelledby="pairs-tab">
+    <div class="r-lab-reading"><div><span class="r-small">Unordered prime pairs</span><p><strong id="pair-count">{initial.length}</strong><span id="pair-equation">ways to write 100 = p + q</span></p></div><span class="r-small">Each pair counted once, p ≤ q</span></div>
+    <svg id="pair-plot" viewBox="0 0 900 280" role="img" aria-label="Prime pairs linked across the midpoint"><title>Prime pairs reflected around N / 2</title></svg>
+    <div id="pair-list" class="r-pair-list" aria-live="polite">{initial.map(([p, q]) => <span>{p} + {q}</span>)}</div>
+    <p class="r-small">Every arc joins two primes whose sum is N. The shared center is N / 2. Equal primes are allowed; 4 = 2 + 2 is included.</p>
+  </div>
+  <div id="geometry-panel" role="tabpanel" aria-labelledby="geometry-tab" hidden>
+    <div class="r-geometry-controls"><label for="compression-scale">Compression scale s <output id="scale-value">20</output><input id="compression-scale" type="range" min="1" max="200" value="20" /></label><p class="r-small">Same prime pair. Two choices of origin.</p></div>
+    <svg id="geometry-plot" viewBox="0 0 900 300" role="img" aria-label="Comparison of zero-centered and midpoint-centered bounded coordinates"></svg>
+    <p id="geometry-caption" class="r-small" aria-live="polite"></p>
+    <p class="r-small">bₛ(x) = x / (s + |x|). For midpoint centering, replace x with x − N/2. The bounded positions remain distinct; compression changes ordinary distances.</p>
+  </div>
+  <div id="counts-panel" role="tabpanel" aria-labelledby="counts-tab" hidden>
+    <div class="r-lab-reading"><div><span class="r-small">Finite computational sample</span><p><strong>999</strong><span>even integers from 4 to 2,000</span></p></div></div>
+    <svg id="counts-plot" viewBox="0 0 900 320" role="img" aria-label="Number of unordered Goldbach pairs for every even integer from 4 to 2,000, with the selected integer highlighted"></svg>
+    <p id="counts-caption" class="r-small" aria-live="polite"></p>
+    <p class="r-small">Each point is an exact sieve-based count in this finite range. A pattern or a positive count in a finite sample does not establish the conjecture for all even integers.</p>
+  </div>
+  <noscript><p>The interactive plots need JavaScript. For N = 100 the six prime pairs are listed above; the research notes below are available without JavaScript.</p></noscript>
+</div>
+
+<script>
+  import { primeSieve, goldbachPairs, bounded } from "../lib/primes";
+  const prime = primeSieve(2000);
+  const root = document.getElementById("prime-lab")!;
+  const get = <T extends HTMLElement>(id: string) => root.querySelector<T>(`#${id}`)!;
+  const number = get<HTMLInputElement>("even-number");
+  const range = get<HTMLInputElement>("even-range");
+  const scale = get<HTMLInputElement>("compression-scale");
+  const svg = (id: string) => root.querySelector<SVGSVGElement>(`#${id}`)!;
+  const ns = "http://www.w3.org/2000/svg";
+  const add = (parent: SVGElement, tag: string, attrs: Record<string, string | number>, text?: string) => {
+    const el = document.createElementNS(ns, tag);
+    for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, String(value));
+    if (text !== undefined) el.textContent = text;
+    parent.appendChild(el); return el;
+  };
+  let selected = 100;
+  const counts = Array.from({length: 999}, (_, i) => { const n = 4 + 2 * i; return { n, count: goldbachPairs(n, prime).length }; });
+  const maxCount = Math.max(...counts.map(d => d.count));
+  function drawPairs() {
+    const pairs = goldbachPairs(selected, prime), plot = svg("pair-plot");
+    plot.replaceChildren();
+    add(plot, "title", {}, `The ${pairs.length} unordered prime pairs for ${selected}`);
+    const x = (v: number) => 45 + 810 * v / selected;
+    add(plot, "line", {x1:45, y1:235, x2:855, y2:235, class:"r-axis"});
+    add(plot, "line", {x1:450, y1:22, x2:450, y2:250, class:"r-midline"});
+    add(plot, "text", {x:450, y:272, "text-anchor":"middle", class:"r-svg-label"}, `midpoint ${selected / 2}`);
+    add(plot, "text", {x:45, y:272, class:"r-svg-label"}, "0");
+    add(plot, "text", {x:855, y:272, "text-anchor":"end", class:"r-svg-label"}, String(selected));
+    pairs.forEach(([p,q]) => {
+      const xp=x(p), xq=x(q), height=25 + 185 * (q-p) / selected;
+      const path = add(plot, "path", {d:`M ${xp} 235 Q 450 ${235-height*2} ${xq} 235`, class:"r-pair-arc", opacity: pairs.length > 35 ? .35 : .8});
+      add(path, "title", {}, `${p} + ${q} = ${selected}`);
+      add(plot, "circle", {cx:xp, cy:235, r:3, class:"r-prime-dot"});
+      add(plot, "circle", {cx:xq, cy:235, r:3, class:"r-prime-dot"});
+      if(p===q) add(plot,"circle",{cx:450,cy:235,r:8,fill:"none",class:"r-pair-arc"});
+    });
+    get("pair-count").textContent = String(pairs.length);
+    get("pair-equation").textContent = `ways to write ${selected} = p + q`;
+    get("pair-list").replaceChildren(...pairs.map(([p,q]) => {const el=document.createElement("span");el.textContent=`${p} + ${q}`;return el;}));
+  }
+  function drawGeometry() {
+    const plot=svg("geometry-plot"), s=Number(scale.value), m=selected/2;
+    const [p,q]=goldbachPairs(selected,prime)[0];
+    plot.replaceChildren();
+    add(plot,"title",{},`The pair ${p} + ${q}: zero and midpoint centered compression at scale ${s}`);
+    const x=(v:number)=>80+(v+1)*370;
+    for(const [row,center,label] of [[95,0,"Origin at zero"],[230,m,"Origin at midpoint"]] as const) {
+      add(plot,"text",{x:80,y:row-44,class:"r-svg-label"},label);
+      add(plot,"line",{x1:80,y1:row,x2:820,y2:row,class:"r-axis"});
+      for(const end of [-1,0,1]) add(plot,"text",{x:x(end),y:row+34,"text-anchor":"middle",class:"r-svg-label"},end===1?"+1":String(end));
+      const bp=bounded(p,s,center), bq=bounded(q,s,center), bm=bounded(m,s,center);
+      add(plot,"line",{x1:x(bp),y1:row,x2:x(bq),y2:row,class:"r-pair-arc","stroke-width":3});
+      for(const [v,caption,dy,cls] of [[bp,`p = ${p}`,-25,"r-prime-dot"],[bq,`q = ${q}`,-8,"r-prime-dot"],[bm,`m = ${m}`,58,"r-center-dot"]] as const) {
+        add(plot,"circle",{cx:x(v),cy:row,r:5,class:cls});
+        add(plot,"text",{x:x(v),y:row+dy,"text-anchor":"middle",class:"r-svg-label"},caption);
+      }
+    }
+    get("scale-value").textContent=String(s);
+    get("geometry-caption").textContent=`Using ${selected} = ${p} + ${q}. Midpoint centering gives coordinates ±${Math.abs(bounded(p,s,m)).toFixed(4)}, preserving reflection exactly.${p===q?" This equal-prime pair sits directly at the midpoint; choose another N to compare unequal distances.":""}`;
+  }
+  function drawCounts() {
+    const plot=svg("counts-plot");plot.replaceChildren();
+    const x=(n:number)=>60+790*(n-4)/1996, y=(c:number)=>270-225*c/maxCount;
+    add(plot,"title",{},"Exact counts of unordered prime pairs for even integers from 4 to 2,000");
+    for(let i=0;i<=4;i++) {
+      const c=Math.round(maxCount*i/4);
+      add(plot,"line",{x1:60,y1:y(c),x2:850,y2:y(c),class:"r-gridline"});
+      add(plot,"text",{x:45,y:y(c)+4,"text-anchor":"end",class:"r-svg-label"},String(c));
+    }
+    counts.forEach(d=>{const dot=add(plot,"circle",{cx:x(d.n),cy:y(d.count),r:2,class:"r-count-dot"});add(dot,"title",{},`${d.n}: ${d.count} pairs`);});
+    for(const n of [4,500,1000,1500,2000]) add(plot,"text",{x:x(n),y:300,"text-anchor":"middle",class:"r-svg-label"},String(n));
+    const c=goldbachPairs(selected,prime).length;
+    add(plot,"line",{x1:x(selected),y1:20,x2:x(selected),y2:270,class:"r-midline"});
+    add(plot,"circle",{cx:x(selected),cy:y(c),r:6,class:"r-selected-dot"});
+    get("counts-caption").textContent=`Selected N = ${selected}: ${c} unordered prime pairs. All 999 even integers in this sample have at least one pair.`;
+  }
+  function render() {
+    range.value=String(selected);
+    get<HTMLButtonElement>("previous-even").disabled=selected===4;
+    get<HTMLButtonElement>("next-even").disabled=selected===2000;
+    drawPairs(); drawGeometry(); drawCounts();
+  }
+  number.addEventListener("input",()=>{
+    const n=number.valueAsNumber;
+    const valid=Number.isInteger(n)&&n>=4&&n<=2000&&n%2===0;
+    number.setAttribute("aria-invalid",String(!valid));
+    get("number-error").textContent=valid?"":"Enter an even integer from 4 to 2,000. The plots retain the last valid value.";
+    if(valid){selected=n;render();}
+  });
+  const choose=(n:number)=>{selected=n;number.value=String(n);number.setAttribute("aria-invalid","false");get("number-error").textContent="";render();};
+  range.addEventListener("input",()=>choose(Number(range.value)));
+  get("previous-even").addEventListener("click",()=>choose(Math.max(4,selected-2)));
+  get("next-even").addEventListener("click",()=>choose(Math.min(2000,selected+2)));
+  scale.addEventListener("input",drawGeometry);
+  const tabs=Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  function activate(tab:HTMLButtonElement) {
+    tabs.forEach(t=>{const active=t===tab;t.setAttribute("aria-selected",String(active));t.tabIndex=active?0:-1;get(t.getAttribute("aria-controls")!).hidden=!active;});
+  }
+  tabs.forEach((tab,i)=>{
+    tab.addEventListener("click",()=>activate(tab));
+    tab.addEventListener("keydown",event=>{
+      let next=i;
+      if(event.key==="ArrowRight")next=(i+1)%tabs.length;
+      else if(event.key==="ArrowLeft")next=(i+tabs.length-1)%tabs.length;
+      else if(event.key==="Home")next=0;
+      else if(event.key==="End")next=tabs.length-1;
+      else return;
+      event.preventDefault();activate(tabs[next]);tabs[next].focus();
+    });
+  });
+  render();
+</script>
