@@ -1,0 +1,263 @@
+{
+  "date": "2026-10-30",
+  "scope": "Exact finite support and norm audit; no inferred asymptotic or all-target result.",
+  "source_sha256": "291ca37b5bccf43f3170c78b5e5191371eb27750a1f3ee6372771073779219e9",
+  "weight_absolute_bound": 6,
+  "profiles": [
+    {
+      "X": 1000,
+      "target_count": 500,
+      "frozen_cutoffs": [
+        3,
+        10
+      ],
+      "maximum_moving_cutoffs": [
+        4,
+        12
+      ],
+      "rough_support_size": 666,
+      "threshold_band_support_size": 61,
+      "endpoint_support_size": 14,
+      "union_support_size": 74,
+      "exact_transfer_squared_error": 7876,
+      "exact_transfer_absolute_error": 1530,
+      "maximum_absolute_transfer_error": 18,
+      "nonzero_differences": 451,
+      "envelope_prefix_square_sum": 1086600,
+      "exact_Young_upper_bound": 75624523776,
+      "all_pointwise_support_bounds_verified": true,
+      "first_nonzero_examples": [
+        {
+          "target": 1002,
+          "actual_T": 47,
+          "frozen_convolution": 53,
+          "difference": -6,
+          "midpoint": 0
+        },
+        {
+          "target": 1004,
+          "actual_T": 25,
+          "frozen_convolution": 27,
+          "difference": -2,
+          "midpoint": 0
+        },
+        {
+          "target": 1006,
+          "actual_T": 22,
+          "frozen_convolution": 26,
+          "difference": -4,
+          "midpoint": 1
+        }
+      ],
+      "descriptive_log_normalizations": {
+        "support_B_times_log_squared_over_X": 2.9107420626526403,
+        "squared_error_times_log_fourth_over_X_cubed": 0.01793302199470738,
+        "squared_error_times_log_fifth_over_X_cubed": 0.12387692735204266
+      }
+    },
+    {
+      "X": 10000,
+      "target_count": 5000,
+      "frozen_cutoffs": [
+        6,
+        21
+      ],
+      "maximum_moving_cutoffs": [
+        7,
+        27
+      ],
+      "rough_support_size": 5333,
+      "threshold_band_support_size": 961,
+      "endpoint_support_size": 37,
+      "union_support_size": 991,
+      "exact_transfer_squared_error": 14735902,
+      "exact_transfer_absolute_error": 154888,
+      "maximum_absolute_transfer_error": 224,
+      "nonzero_differences": 4781,
+      "envelope_prefix_square_sum": 1095830565,
+      "exact_Young_upper_bound": 108603513808128,
+      "all_pointwise_support_bounds_verified": true,
+      "first_nonzero_examples": [
+        {
+          "target": 10002,
+          "actual_T": 279,
+          "frozen_convolution": 288,
+          "difference": -9,
+          "midpoint": 0
+        },
+        {
+          "target": 10004,
+          "actual_T": 134,
+          "frozen_convolution": 142,
+          "difference": -8,
+          "midpoint": 0
+        },
+        {
+          "target": 10008,
+          "actual_T": 271,
+          "frozen_convolution": 274,
+          "difference": -3,
+          "midpoint": 0
+        }
+      ],
+      "descriptive_log_normalizations": {
+        "support_B_times_log_squared_over_X": 8.152198534671587,
+        "squared_error_times_log_fourth_over_X_cubed": 0.10604237470535627,
+        "squared_error_times_log_fifth_over_X_cubed": 0.9766863648889689
+      }
+    },
+    {
+      "X": 50000,
+      "target_count": 25000,
+      "frozen_cutoffs": [
+        8,
+        36
+      ],
+      "maximum_moving_cutoffs": [
+        10,
+        46
+      ],
+      "rough_support_size": 22856,
+      "threshold_band_support_size": 1664,
+      "endpoint_support_size": 71,
+      "union_support_size": 1732,
+      "exact_transfer_squared_error": 24937895,
+      "exact_transfer_absolute_error": 564897,
+      "maximum_absolute_transfer_error": 149,
+      "nonzero_differences": 24354,
+      "envelope_prefix_square_sum": 12482941778,
+      "exact_Young_upper_bound": 1421742634205184,
+      "all_pointwise_support_bounds_verified": true,
+      "first_nonzero_examples": [
+        {
+          "target": 50002,
+          "actual_T": 516,
+          "frozen_convolution": 525,
+          "difference": -9,
+          "midpoint": 0
+        },
+        {
+          "target": 50004,
+          "actual_T": 973,
+          "frozen_convolution": 987,
+          "difference": -14,
+          "midpoint": 0
+        },
+        {
+          "target": 50006,
+          "actual_T": 615,
+          "frozen_convolution": 624,
+          "difference": -9,
+          "midpoint": 0
+        }
+      ],
+      "descriptive_log_normalizations": {
+        "support_B_times_log_squared_over_X": 3.896009798679942,
+        "squared_error_times_log_fourth_over_X_cubed": 0.0027341555889117447,
+        "squared_error_times_log_fifth_over_X_cubed": 0.029582957267106306
+      }
+    },
+    {
+      "X": 100000,
+      "target_count": 50000,
+      "frozen_cutoffs": [
+        10,
+        46
+      ],
+      "maximum_moving_cutoffs": [
+        11,
+        58
+      ],
+      "rough_support_size": 45714,
+      "threshold_band_support_size": 5808,
+      "endpoint_support_size": 101,
+      "union_support_size": 5898,
+      "exact_transfer_squared_error": 6052866368,
+      "exact_transfer_absolute_error": 10402850,
+      "maximum_absolute_transfer_error": 1383,
+      "nonzero_differences": 49147,
+      "envelope_prefix_square_sum": 282334749695,
+      "exact_Young_upper_bound": 32974919544047616,
+      "all_pointwise_support_bounds_verified": true,
+      "first_nonzero_examples": [
+        {
+          "target": 100002,
+          "actual_T": 1752,
+          "frozen_convolution": 1772,
+          "difference": -20,
+          "midpoint": 0
+        },
+        {
+          "target": 100004,
+          "actual_T": 817,
+          "frozen_convolution": 826,
+          "difference": -9,
+          "midpoint": 0
+        },
+        {
+          "target": 100006,
+          "actual_T": 825,
+          "frozen_convolution": 836,
+          "difference": -11,
+          "midpoint": 0
+        }
+      ],
+      "descriptive_log_normalizations": {
+        "support_B_times_log_squared_over_X": 7.698356056414634,
+        "squared_error_times_log_fourth_over_X_cubed": 0.1063417634879684,
+        "squared_error_times_log_fifth_over_X_cubed": 1.2243047968504728
+      }
+    },
+    {
+      "X": 125000,
+      "target_count": 62500,
+      "frozen_cutoffs": [
+        10,
+        50
+      ],
+      "maximum_moving_cutoffs": [
+        12,
+        62
+      ],
+      "rough_support_size": 57141,
+      "threshold_band_support_size": 7861,
+      "endpoint_support_size": 114,
+      "union_support_size": 7961,
+      "exact_transfer_squared_error": 18095548034,
+      "exact_transfer_absolute_error": 26040356,
+      "maximum_absolute_transfer_error": 1844,
+      "nonzero_differences": 62186,
+      "envelope_prefix_square_sum": 641179715812,
+      "exact_Young_upper_bound": 75094489375831296,
+      "all_pointwise_support_bounds_verified": true,
+      "first_nonzero_examples": [
+        {
+          "target": 125002,
+          "actual_T": 883,
+          "frozen_convolution": 887,
+          "difference": -4,
+          "midpoint": 1
+        },
+        {
+          "target": 125004,
+          "actual_T": 2203,
+          "frozen_convolution": 2224,
+          "difference": -21,
+          "midpoint": 0
+        },
+        {
+          "target": 125006,
+          "actual_T": 996,
+          "frozen_convolution": 1001,
+          "difference": -5,
+          "midpoint": 0
+        }
+      ],
+      "descriptive_log_normalizations": {
+        "support_B_times_log_squared_over_X": 8.66189854977751,
+        "squared_error_times_log_fourth_over_X_cubed": 0.17576496850138834,
+        "squared_error_times_log_fifth_over_X_cubed": 2.0627898009773538
+      }
+    }
+  ]
+}

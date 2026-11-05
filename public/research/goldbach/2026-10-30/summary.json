@@ -1,0 +1,112 @@
+{
+  "researchThrough": "2026-10-30",
+  "published": "2026-11-05",
+  "finite": {
+    "first": 6,
+    "last": 250000,
+    "targets": 124998,
+    "positive": 124998,
+    "zero": 0,
+    "negative": 0,
+    "sourceSha256": "291ca37b5bccf43f3170c78b5e5191371eb27750a1f3ee6372771073779219e9",
+    "bands": [
+      {
+        "X": 500,
+        "targets": 250,
+        "scoreSum": "4291",
+        "pairSum": 5016,
+        "ratioExact": "4291/5016",
+        "ratio": 0.8554625199362041
+      },
+      {
+        "X": 1000,
+        "targets": 500,
+        "scoreSum": "12993",
+        "pairSum": 16856,
+        "ratioExact": "12993/16856",
+        "ratio": 0.7708234456573327
+      },
+      {
+        "X": 2000,
+        "targets": 1000,
+        "scoreSum": "44336",
+        "pairSum": 56579,
+        "ratioExact": "44336/56579",
+        "ratio": 0.7836122943141448
+      },
+      {
+        "X": 4000,
+        "targets": 2000,
+        "scoreSum": "158824",
+        "pairSum": 192447,
+        "ratioExact": "158824/192447",
+        "ratio": 0.8252869621246369
+      },
+      {
+        "X": 5000,
+        "targets": 2500,
+        "scoreSum": "228913",
+        "pairSum": 285835,
+        "ratioExact": "228913/285835",
+        "ratio": 0.8008571378592545
+      },
+      {
+        "X": 10000,
+        "targets": 5000,
+        "scoreSum": "1515619/2",
+        "pairSum": 982083,
+        "ratioExact": "1515619/1964166",
+        "ratio": 0.7716348821840924
+      },
+      {
+        "X": 20000,
+        "targets": 10000,
+        "scoreSum": "5483317/2",
+        "pairSum": 3404069,
+        "ratioExact": "5483317/6808138",
+        "ratio": 0.8054062652666559
+      },
+      {
+        "X": 25000,
+        "targets": 12500,
+        "scoreSum": "7924947/2",
+        "pairSum": 5084354,
+        "ratioExact": "7924947/10168708",
+        "ratio": 0.7793465010500842
+      },
+      {
+        "X": 50000,
+        "targets": 25000,
+        "scoreSum": "12283516",
+        "pairSum": 17796922,
+        "ratioExact": "6141758/8898461",
+        "ratio": 0.690204519635474
+      },
+      {
+        "X": 100000,
+        "targets": 50000,
+        "scoreSum": "41198646",
+        "pairSum": 62697019,
+        "ratioExact": "41198646/62697019",
+        "ratio": 0.657106935179805
+      },
+      {
+        "X": 125000,
+        "targets": 62500,
+        "scoreSum": "127177897/2",
+        "pairSum": 94186401,
+        "ratioExact": "127177897/188372802",
+        "ratio": 0.675139381321089
+      }
+    ]
+  },
+  "certificate": {
+    "target": 1000000,
+    "wheel": 7,
+    "exactBound": "1705/2",
+    "integerBound": 853,
+    "observedPairs": 5382,
+    "moments": 25
+  },
+  "scope": "Finite results and project derivations; the October 30 Fourier comparison is a draft under review. No all-target Goldbach theorem or novelty is claimed."
+}

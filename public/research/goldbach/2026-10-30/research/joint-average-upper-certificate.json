@@ -1,0 +1,27 @@
+{
+  "status": "Exact rational certificate for the constant only; the asymptotic theorem is separate.",
+  "method": "1024-cell rectangle enclosures, 24-term atanh logarithm bounds, outward rounding at denominator 2^56.",
+  "enclosures_exact": {
+    "C3": [
+      "224484696701025312631/553402322211286548480",
+      "18748288974201029111/46116860184273879040"
+    ],
+    "C3_balanced": [
+      "235177462338005804883/737869762948382064640",
+      "1412740151146690971683/4427218577690292387840"
+    ],
+    "C3_E_positive": [
+      "279412817063316427509/1475739525896764129280",
+      "419784603578993158861/2213609288845146193920"
+    ],
+    "C4_lower": "3/256"
+  },
+  "coarse_strict_bounds": {
+    "C3_lower": "405/1000",
+    "C3_balanced_lower": "318/1000",
+    "C3_E_positive_upper": "191/1000"
+  },
+  "averaged_pair_coefficient_strict_upper_exact": "303655143/1024000000",
+  "averaged_pair_coefficient_strict_upper": "3/10",
+  "uses_previous_positive_sign_certificate": true
+}

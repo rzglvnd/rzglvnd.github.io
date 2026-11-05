@@ -1,0 +1,300 @@
+{
+  "date": "2026-10-29",
+  "arithmetic": "exact integers and rational numbers",
+  "scope": "Finite residue identities and infinite-product tail certificates; no prime-pair error bound.",
+  "finite_moduli": [
+    {
+      "modulus": 1,
+      "primes": [],
+      "phi": 1,
+      "residue_factors_exact": [
+        "1"
+      ],
+      "mean_exact": "1",
+      "second_moment_exact": "1",
+      "all_pair_counts_and_Ramanujan_expansions_match": true
+    },
+    {
+      "modulus": 3,
+      "primes": [
+        3
+      ],
+      "phi": 2,
+      "residue_factors_exact": [
+        "3/2",
+        "3/4",
+        "3/4"
+      ],
+      "mean_exact": "1",
+      "second_moment_exact": "9/8",
+      "all_pair_counts_and_Ramanujan_expansions_match": true
+    },
+    {
+      "modulus": 15,
+      "primes": [
+        3,
+        5
+      ],
+      "phi": 8,
+      "residue_factors_exact": [
+        "15/8",
+        "45/64",
+        "45/64",
+        "45/32",
+        "45/64",
+        "15/16",
+        "45/32",
+        "45/64",
+        "45/64",
+        "45/32",
+        "15/16",
+        "45/64",
+        "45/32",
+        "45/64",
+        "45/64"
+      ],
+      "mean_exact": "1",
+      "second_moment_exact": "585/512",
+      "all_pair_counts_and_Ramanujan_expansions_match": true
+    },
+    {
+      "modulus": 105,
+      "primes": [
+        3,
+        5,
+        7
+      ],
+      "phi": 48,
+      "residue_factors_exact": [
+        "35/16",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/192",
+        "175/128",
+        "105/128",
+        "175/256",
+        "175/128",
+        "175/192",
+        "175/256",
+        "175/128",
+        "175/256",
+        "105/128",
+        "175/96",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/192",
+        "105/64",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/192",
+        "175/256",
+        "175/128",
+        "105/128",
+        "175/256",
+        "175/96",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/256",
+        "35/32",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/192",
+        "175/256",
+        "105/64",
+        "175/256",
+        "175/256",
+        "175/96",
+        "175/256",
+        "175/256",
+        "175/128",
+        "105/128",
+        "175/192",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/128",
+        "175/192",
+        "105/128",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/96",
+        "175/256",
+        "175/256",
+        "105/64",
+        "175/256",
+        "175/192",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/128",
+        "35/32",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/96",
+        "175/256",
+        "105/128",
+        "175/128",
+        "175/256",
+        "175/192",
+        "175/128",
+        "175/256",
+        "175/256",
+        "105/64",
+        "175/192",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/256",
+        "175/96",
+        "105/128",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/192",
+        "175/128",
+        "175/256",
+        "105/128",
+        "175/128",
+        "175/192",
+        "175/256",
+        "175/128",
+        "175/256",
+        "175/256"
+      ],
+      "mean_exact": "1",
+      "second_moment_exact": "14105/12288",
+      "all_pair_counts_and_Ramanujan_expansions_match": true
+    }
+  ],
+  "refinements": [
+    {
+      "old_modulus": 1,
+      "new_prime": 3,
+      "mean_squared_increment_exact": "1/8",
+      "mean_increment_on_divisible_targets_exact": "1/6",
+      "mean_increment_on_other_targets_exact": "-1/6",
+      "absolute_mean_increment_exact": "1/3"
+    },
+    {
+      "old_modulus": 3,
+      "new_prime": 5,
+      "mean_squared_increment_exact": "9/512",
+      "mean_increment_on_divisible_targets_exact": "1/20",
+      "mean_increment_on_other_targets_exact": "-1/20",
+      "absolute_mean_increment_exact": "1/10"
+    },
+    {
+      "old_modulus": 15,
+      "new_prime": 7,
+      "mean_squared_increment_exact": "65/12288",
+      "mean_increment_on_divisible_targets_exact": "1/42",
+      "mean_increment_on_other_targets_exact": "-1/42",
+      "absolute_mean_increment_exact": "1/21"
+    },
+    {
+      "old_modulus": 105,
+      "new_prime": 11,
+      "mean_squared_increment_exact": "2821/2457600",
+      "mean_increment_on_divisible_targets_exact": "1/110",
+      "mean_increment_on_other_targets_exact": "-1/110",
+      "absolute_mean_increment_exact": "1/55"
+    }
+  ],
+  "tail_certificates": [
+    {
+      "prime_cutoff": 3,
+      "C2_lower_exact": "1/2",
+      "C2_upper_exact": "3/4",
+      "D_y_exact": "9/8",
+      "D_infinity_minus_D_y_upper_exact": "45/392",
+      "coarse_upper_exact": "1/6",
+      "descriptive_decimals": {
+        "C2_lower": 0.5,
+        "C2_upper": 0.75,
+        "D_y": 1.125,
+        "mean_square_tail_upper": 0.11479591836734694
+      }
+    },
+    {
+      "prime_cutoff": 5,
+      "C2_lower_exact": "9/16",
+      "C2_upper_exact": "45/64",
+      "D_y_exact": "585/512",
+      "D_infinity_minus_D_y_upper_exact": "455/13824",
+      "coarse_upper_exact": "3/50",
+      "descriptive_decimals": {
+        "C2_lower": 0.5625,
+        "C2_upper": 0.703125,
+        "D_y": 1.142578125,
+        "mean_square_tail_upper": 0.03291377314814815
+      }
+    },
+    {
+      "prime_cutoff": 7,
+      "C2_lower_exact": "75/128",
+      "C2_upper_exact": "175/256",
+      "D_y_exact": "14105/12288",
+      "D_infinity_minus_D_y_upper_exact": "42315/2772992",
+      "coarse_upper_exact": "3/98",
+      "descriptive_decimals": {
+        "C2_lower": 0.5859375,
+        "C2_upper": 0.68359375,
+        "D_y": 1.1478678385416667,
+        "mean_square_tail_upper": 0.015259690615768094
+      }
+    },
+    {
+      "prime_cutoff": 11,
+      "C2_lower_exact": "315/512",
+      "C2_upper_exact": "693/1024",
+      "D_y_exact": "2823821/2457600",
+      "D_infinity_minus_D_y_upper_exact": "36709673/6510182400",
+      "coarse_upper_exact": "3/242",
+      "descriptive_decimals": {
+        "C2_lower": 0.615234375,
+        "C2_upper": 0.6767578125,
+        "D_y": 1.1490157063802082,
+        "mean_square_tail_upper": 0.005638808676082563
+      }
+    },
+    {
+      "prime_cutoff": 31,
+      "C2_lower_exact": "1380761369/2147483648",
+      "C2_upper_exact": "42803602439/64424509440",
+      "D_y_exact": "195202711205810489590220201/169688142326893274726400000",
+      "D_infinity_minus_D_y_upper_exact": "195202711205810489590220201/306204823861338412626739200000",
+      "coarse_upper_exact": "3/1922",
+      "descriptive_decimals": {
+        "C2_lower": 0.6429671165533364,
+        "C2_upper": 0.6643993537717809,
+        "D_y": 1.150361531035946,
+        "mean_square_tail_upper": 0.0006374906467646178
+      }
+    },
+    {
+      "prime_cutoff": 101,
+      "C2_lower_exact": "35581668485730147314063883241836825223/54342794932368325954596447348326400000",
+      "C2_upper_exact": "3593748517058744878720452207425519347523/5434279493236832595459644734832640000000",
+      "D_y_exact": "65197942616992887998612525849770435459536202691684402592861729344397519166640920119037996837/56670702034320936168146957321717944077698309342533359130303468887500390400000000000000000000",
+      "D_infinity_minus_D_y_upper_exact": "6715388089550267463857090162526354852332228877243493467064758122472944474164014772260913674211/116769924871016254653530637414442502054153288701980643954631167339225666918809600000000000000000000",
+      "coarse_upper_exact": "3/20402",
+      "descriptive_decimals": {
+        "C2_lower": 0.6547633137017131,
+        "C2_upper": 0.6613109468387303,
+        "D_y": 1.1504700008393698,
+        "mean_square_tail_upper": 5.750956932590363e-05
+      }
+    }
+  ]
+}

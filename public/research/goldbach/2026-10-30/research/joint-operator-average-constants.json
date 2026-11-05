@@ -1,0 +1,36 @@
+{
+  "status": "Exact sign certificate; decimal quadrature is numerical only. Asymptotic proof is separate.",
+  "exact_certificate": {
+    "method": "Exact rational decreasing-integrand upper sum and atanh-series remainder.",
+    "riemann_cells": 256,
+    "log_series_terms": 24,
+    "C3_upper_sum_exact": "3765350825490954197/9223372036854775808",
+    "C3_strict_upper": "41/100",
+    "C4_upper": "1/36",
+    "cF_strict_lower": "29/300",
+    "cE_lower": "1",
+    "averaged_pair_coefficient_strict_lower": "29/300"
+  },
+  "numerical_quadrature_not_a_rigorous_enclosure": {
+    "C3": 0.4060916334991808,
+    "C3_symmetric_formula": 0.4060916335754853,
+    "C3_balanced": 0.3189140966552638,
+    "C3_E_positive": 0.18948777094717562,
+    "C4": 0.014886346728651778,
+    "cF": 0.23033522965959996,
+    "cE": 1.2341468111331308,
+    "averaged_pair_coefficient": 0.28426748917601263,
+    "rough_density_coefficient": 2.807272341347723
+  },
+  "numerical_resolution_difference_128_vs_256": {
+    "C3": 6.237654837093487e-11,
+    "C3_symmetric_formula": 1.206368061001939e-09,
+    "C3_balanced": 2.2005175459582915e-12,
+    "C3_E_positive": 1.4688250615790821e-12,
+    "C4": 1.9212676588553634e-11,
+    "cF": 1.222150713964254e-10,
+    "cE": 5.910694156341378e-11,
+    "averaged_pair_coefficient": 1.372169045055216e-10,
+    "rough_density_coefficient": 8.158940190128305e-11
+  }
+}

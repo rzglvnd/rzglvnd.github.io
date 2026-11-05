@@ -1,0 +1,2 @@
+# Preserve the exact bytes used by the research snapshot's source hashes.
+public/research/goldbach/** -text whitespace=cr-at-eol

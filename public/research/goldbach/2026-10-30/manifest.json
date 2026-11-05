@@ -1,0 +1,155 @@
+{
+  "snapshot": "2026-10-30",
+  "files": [
+    {
+      "path": "research/joint-operator-growth.md",
+      "bytes": 8154,
+      "sha256": "08f337c47861312cc08935e6aa3805d12e59dcc64e2388a1595aba46abcca243"
+    },
+    {
+      "path": "research/joint-operator-average.md",
+      "bytes": 17427,
+      "sha256": "7c09f5ef930fb8f74576240d738ea2ffd36634984dad97f0b2ef2db824a916b1"
+    },
+    {
+      "path": "research/joint-positive-proportion.md",
+      "bytes": 9305,
+      "sha256": "3baf7526b9ff134268bb39e2d59421092a31e70fda43e976b1405f5b8432da5c"
+    },
+    {
+      "path": "research/joint-reflection-correlation.md",
+      "bytes": 5720,
+      "sha256": "dffcd65e9112f0c1b2879ce33b7dbea4a6391be199f10fe659dae6456a5015ab"
+    },
+    {
+      "path": "research/joint-average-constant-audit.md",
+      "bytes": 7024,
+      "sha256": "bf84def454c6c2829f60377d9e22cdac62b06d68412288097fd871c2ad489a86"
+    },
+    {
+      "path": "research/compact-residue-normalization.md",
+      "bytes": 13063,
+      "sha256": "4f9164dcb0f70e53cf29b5f57c271f036bce1dff3a6442497fd77f4c10e82014"
+    },
+    {
+      "path": "research/local-residue-reflection-proof.md",
+      "bytes": 11764,
+      "sha256": "25cdc6cab45e661d869e88d87282d0831f95a3446ba261f4b4a0a9803df36252"
+    },
+    {
+      "path": "research/frozen-threshold-transfer.md",
+      "bytes": 6811,
+      "sha256": "0ec581e45216e1942be107779cdabe05ed6f3323cbaebfe4c191d33bdd317dbb"
+    },
+    {
+      "path": "research/almost-all-circle-method.md",
+      "bytes": 15343,
+      "sha256": "04058ac040e148dee3cd2d3a24407b8bc8aaab20177b25fda791326888ee6f48"
+    },
+    {
+      "path": "research/almost-all-transfer-audit.md",
+      "bytes": 11924,
+      "sha256": "c9479e088f7b617aaada13de3068c63d87305e9d8bd6b9f95bd8ed44d39d0c5b"
+    },
+    {
+      "path": "research/cross-defect-moments.md",
+      "bytes": 2190,
+      "sha256": "79c7ae8ed378ad3d625f15b9cce37c4547e43c731cec0d884819b6dbacd3b2e4"
+    },
+    {
+      "path": "research/oriented-state-constraints.md",
+      "bytes": 5824,
+      "sha256": "2f5408d999fb711601aa64dda1b14d207eceb84d02d3b0ed6eb652ac87c4b165"
+    },
+    {
+      "path": "research/joint-cross-search-results.json",
+      "bytes": 16250,
+      "sha256": "0119a05faad6be608b41aa9f5207941d949dc7960450563255a9ac10ef68fee6"
+    },
+    {
+      "path": "research/cross-defect-moments.json",
+      "bytes": 893,
+      "sha256": "55b330d151f64c5bd9d4ccf91f6acecfb7b3caa5db90e6f68c8c5e9a98e232a9"
+    },
+    {
+      "path": "research/joint-cross-verification.json",
+      "bytes": 1748,
+      "sha256": "d2406452397e9ab8414490c3913a7ce23be921b20ccfe53bd5d31db6eff997cd"
+    },
+    {
+      "path": "research/local-singular-factor.json",
+      "bytes": 8143,
+      "sha256": "c65b5c9c4db6dd41dddb209ac55e49af0de2b06b18e9c80158c629505282e784"
+    },
+    {
+      "path": "research/joint-average-bands.json",
+      "bytes": 20906596,
+      "sha256": "291ca37b5bccf43f3170c78b5e5191371eb27750a1f3ee6372771073779219e9"
+    },
+    {
+      "path": "research/joint-operator-stress.json",
+      "bytes": 4414390,
+      "sha256": "c9229d2168749600df8c40a0275c8e311915064ff339336f0d354c732e347ad0"
+    },
+    {
+      "path": "research/frozen-threshold-transfer.json",
+      "bytes": 7808,
+      "sha256": "484b9ef74b025f9bfda31fb6211abdef27b9db443d9f178b76eb231022c2abdb"
+    },
+    {
+      "path": "research/joint-operator-average-constants.json",
+      "bytes": 1409,
+      "sha256": "3b514ebbc5adcdf1c6fa521dfcf405db6f8069bbf9f200054a02d6e524fe3146"
+    },
+    {
+      "path": "research/joint-average-upper-certificate.json",
+      "bytes": 1008,
+      "sha256": "9d64c4f99d782b5d3bc1793bdf32bfee05a61f26a17d1f8580a5f3c6bba6b23b"
+    },
+    {
+      "path": "experiments/joint_cross_verify.py",
+      "bytes": 7537,
+      "sha256": "6d870a0bf062ce6d0a9560e3fd12cec710d46305b6354739a33fd6404b997aff"
+    },
+    {
+      "path": "experiments/oriented_joint_verify.py",
+      "bytes": 7321,
+      "sha256": "e06b2b375d264920a8938575cea04e2ee323514863e78a44304fd9ef80e45bbc"
+    },
+    {
+      "path": "experiments/local_singular_factor.py",
+      "bytes": 5435,
+      "sha256": "c7c3609ad9b9ee0ea3b5ecdb9134bdd4a4112ea69d60487a672afeaeb4867183"
+    },
+    {
+      "path": "experiments/joint_average_bands.py",
+      "bytes": 7535,
+      "sha256": "913ef742780724c973c47674774853362571201db9c44ee7ec56cf0b4d8d3ce4"
+    },
+    {
+      "path": "experiments/joint_operator_scaling.py",
+      "bytes": 4626,
+      "sha256": "c3394d22aac1323cf24691a17b8ceb5be8bb996e8480e079e90550f535accddc"
+    },
+    {
+      "path": "experiments/sieve_corrections.py",
+      "bytes": 11066,
+      "sha256": "5b3ad51e4e0e7ded7e988118bd2cdadf8919fc5f43fcb32857ced0301d4c5672"
+    },
+    {
+      "path": "experiments/frozen_threshold_transfer.py",
+      "bytes": 4637,
+      "sha256": "66d531621883bc1775178d543d11dababbae1e3eed6ca68297ef983518d8aba8"
+    },
+    {
+      "path": "experiments/avgconstant_joint_operator.py",
+      "bytes": 3703,
+      "sha256": "3d37f41dfca6862d3e853d6f0ac4444ee8150697c69d2fb58e87f2f735003785"
+    },
+    {
+      "path": "experiments/joint_average_upper_certificate.py",
+      "bytes": 3363,
+      "sha256": "3ccbd5cc1837021d9922af2866df96e0fc6e283672ffb27439e4254bafa47120"
+    }
+  ]
+}

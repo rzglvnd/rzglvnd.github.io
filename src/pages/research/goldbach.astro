@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import GoldbachLab from "../../components/GoldbachLab.astro";
-import { research, directions, milestones, references } from "../../data/goldbach";
+import { research, directions, milestones, references, evidence, snapshotPath } from "../../data/goldbach";
 import { ulamPoints } from "../../lib/primes";
 import "../../styles/research.css";
 const dots = ulamPoints(49);
 const date = (value: string) => new Intl.DateTimeFormat("en", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(value));
+const bands = evidence.finite.bands.filter(b => [1000,10000,50000,100000,125000].includes(b.X));
 ---
 <BaseLayout title="Goldbach & the Geometry of Primes" description="Reza Ghalavand’s research notebook on Goldbach’s conjecture and prime geometry, developed with ChatGPT Codex. Explore experiments, constructions, and dated progress." image="/assets/images/goldbach-social.png" pageClass="research-page">
   <div class="container">
@@ -35,37 +36,51 @@ const date = (value: string) => new Intl.DateTimeFormat("en", { day: "2-digit", 
       <span>4 research directions</span><span>{milestones.length} recorded milestones</span>
       <span>Updated <time datetime={research.updated}>{date(research.updated)}</time></span>
     </div>
-    <nav class="r-section-nav" aria-label="Research sections"><a href="#question">The question</a><a href="#experiments">Experiments</a><a href="#directions">Research directions</a><a href="#notebook">Progress notebook</a><a href="#references">References</a></nav>
+    <nav class="r-section-nav" aria-label="Research sections"><a href="#findings">Latest results</a><a href="#question">The question</a><a href="#experiments">Experiments</a><a href="#directions">Research directions</a><a href="#notebook">Progress notebook</a><a href="#references">References</a></nav>
+
+    <section id="findings" class="r-section">
+      <div class="r-section-heading"><div><p class="r-kicker">01 / Research update</p><h2>From visual ideas<br />to arithmetic bounds.</h2></div><p>Research through <time datetime={research.through}>{date(research.through)}</time>.<br />This public update: <time datetime={research.updated}>{date(research.updated)}</time>.</p></div>
+      <p class="r-body">The investigation now centers on a joint divisibility operator: a score that is bounded above by the prime-pair indicator. Exact certificates, averaged arguments, and residue corrections give different kinds of progress. The remaining difficulty is control of reflected correlations.</p>
+      <div class="r-results">
+        <article><span class="r-tag">Exact finite computation</span><strong>{evidence.finite.targets.toLocaleString("en-US")}</strong><h3>consecutive targets checked</h3><p>Positive scores at every even N from 6 through 250,000. This is a finite operator experiment.</p><a href="#exhaustive-positive-range">Inspect the range →</a></article>
+        <article><span class="r-tag">Exact finite certificate</span><strong>≥ {evidence.certificate.integerBound}</strong><h3>prime pairs certified</h3><p>For N = 1,000,000 with initial sieve through 7; the rational lower bound is 1705/2.</p><a href="#joint-certificate-853">Inspect the certificate →</a></article>
+        <article><span class="r-tag">Numerical constant estimate</span><strong>κ ≈ 0.28427</strong><h3>a positive averaged coefficient</h3><p>The rigorous bounds are 29/300 &lt; κ &lt; 3/10. The decimal comes from numerical integration.</p><a href="#positive-average">Read the averaged argument →</a></article>
+      </div>
+      <div class="r-review-note"><span class="r-tag">Latest comparison · under review</span><p>The saved October 30 draft develops a Fourier comparison aimed at <strong>almost-all positivity</strong> for the operator. Its full audit and combined conclusion remain pending here. Even an almost-all result can leave exceptional targets; positivity at every target remains unproved.</p><a class="r-link" href="#fourier-comparison-draft">Read the draft’s scope →</a></div>
+      <details class="r-operator-note"><summary>What the score measures</summary><p>For each retained pair r + s = N, count distinct omitted small divisors J and canonical late divisors D on each side. Set F = 1 − J − D, H = J(J − 1)/2 + JD, and E = F + H. The score is q = (FₗEᵣ + EₗFᵣ)/2. With the proved factor restrictions, q is at most the indicator that both members are prime.</p><p>For the growing-cutoff work, the initial sieve runs through floor(N¹ᐟ⁵), the small/late dividing threshold is floor(N¹ᐟ³), and late divisors satisfy p² ≤ n. Sum q over floor(√N) &lt; r ≤ N/2 to obtain S(N); C(N) counts prime pairs in that same interval. Thus S(N) ≤ C(N), and a positive S certifies pairs. Positive average, positive proportion, almost all, and every target are distinct statements.</p><a href="#growing-cutoff-loss">See the ordering and loss identity →</a></details>
+      <details class="r-band-note"><summary>Inspect exact finite band totals</summary><div class="r-table-scroll" tabindex="0" role="region" aria-label="Finite operator band totals"><table><caption>Saved exact totals over even X &lt; N ≤ 2X</caption><thead><tr><th scope="col">X</th><th scope="col">Even targets</th><th scope="col">ΣS / ΣC, exact</th><th scope="col">Decimal</th></tr></thead><tbody>{bands.map(b => <tr><th scope="row">{b.X.toLocaleString("en-US")}</th><td>{b.targets.toLocaleString("en-US")}</td><td>{b.ratioExact}</td><td>{b.ratio.toFixed(6)}</td></tr>)}</tbody></table></div><p class="r-small">Bands overlap and must not be added as independent populations. The finite ratios oscillate and remain well above the limiting κ estimate here. They supply neither a convergence rate nor a proof of the asymptotic argument.</p></details>
+      <div class="r-snapshot"><div><p class="r-kicker">Evidence you can inspect</p><p>Curated notes, full finite data, exact verifiers, and source hashes. Project derivations and AI-assisted reviews are working research, without a claim of peer review or novelty.</p></div><div><a class="r-primary" href={`${snapshotPath}/research-snapshot.zip`} download>Download research snapshot ↓</a><a class="r-link" href={`${snapshotPath}/manifest.json`}>Source hashes ↗</a></div></div>
+    </section>
 
     <section id="question" class="r-section r-question">
-      <div><p class="r-kicker">01 / The question</p><h2>Every even number.<br />Two primes.</h2></div>
+      <div><p class="r-kicker">02 / The question</p><h2>Every even number.<br />Two primes.</h2></div>
       <div><p class="r-body">The strong Goldbach conjecture asks whether every even integer greater than 2 can be written as the sum of two primes, allowing the two primes to be equal.</p>
         <div class="r-equation" aria-label="For every even integer N at least 4, there exist primes p and q such that N equals p plus q"><span>N = p + q</span><small>N ≥ 4, N even; p, q prime</small></div>
         <p class="r-body">For this project, the starting point is geometric: two primes adding to 2m sit at equal distances on opposite sides of m. What becomes visible when we change coordinates, distances, or operators?</p>
-        <p class="r-evidence"><strong>Current project status:</strong> exploratory constructions and exact reformulations. No proof of the binary conjecture is claimed. Finite computations below are demonstrations; published background results are credited in the references.</p>
+        <p class="r-evidence"><strong>Current project status:</strong> exact finite certificates, project derivations for averages and a positive proportion, and an analytic comparison draft under review. No proof of the binary conjecture is claimed. The small browser experiments below illustrate the arithmetic; the larger research evidence is provided separately above.</p>
       </div>
     </section>
 
     <section id="experiments" class="r-section">
-      <div class="r-section-heading"><div><p class="r-kicker">02 / The experimental desk</p><h2>Get a feel for the arithmetic.</h2></div><p>Choose an even number. Inspect its prime pairs, change the geometry, and compare the counts.</p></div>
+      <div class="r-section-heading"><div><p class="r-kicker">03 / The experimental desk</p><h2>Get a feel for the arithmetic.</h2></div><p>Choose an even number. Inspect its prime pairs, change the geometry, and compare the counts. These introductory experiments are separate from the research computations.</p></div>
       <GoldbachLab />
     </section>
 
     <section id="directions" class="r-section">
-      <div class="r-section-heading"><div><p class="r-kicker">03 / Research directions</p><h2>New views of an old problem.</h2></div><p>Four connected lines of inquiry from the research conversation. Each has a precise construction and a question still to answer.</p></div>
+      <div class="r-section-heading"><div><p class="r-kicker">04 / Research directions</p><h2>New views of an old problem.</h2></div><p>The initial coordinate experiments now connect to joint operators, local arithmetic corrections, and Fourier analysis. Each direction retains a precise open question.</p></div>
       <div class="r-directions">{directions.map(d => <article id={d.id} class="r-direction"><div class="r-direction-meta"><span>{d.number}</span><span class="r-tag">{d.status}</span></div><h3>{d.title}</h3><p class="r-formula">{d.formula}</p><p>{d.text}</p><div class="r-open-question"><span>Open question</span><p>{d.question}</p></div></article>)}</div>
-      <p class="r-small r-direction-footnote">The compression scale s is positive. Ω counts prime factors with multiplicity. In divisibility coordinates, a number equal to the divisor itself remains prime. For the circle map, t ∈ ℝ and one point is omitted. Established ingredients are credited as such; novelty and usefulness require further investigation.</p>
+      <p class="r-small r-direction-footnote">C₂ = ∏ₚ&gt;₂ (1 − 1/(p − 1)²). K is half the classical Goldbach singular series in this normalization. For the transfer estimate, the sum is over even X &lt; N ≤ 2X; ∗ denotes discrete convolution. The original bounded-axis and factor-count ideas remain in the October 16 entries.</p>
     </section>
 
     <section id="notebook" class="r-section">
-      <div class="r-section-heading"><div><p class="r-kicker">04 / Progress notebook</p><h2>A record of the work.</h2></div><p>Milestones track what has been defined, checked, or proposed. Progress is recorded through evidence and open questions.</p></div>
+      <div class="r-section-heading"><div><p class="r-kicker">05 / Progress notebook</p><h2>A record of the work.</h2></div><p>Dated project derivations, exact computations, and drafts carry their own evidence labels. Earlier constructions are retained as the investigation develops.</p></div>
       <div class="r-next"><span class="r-kicker">Next investigation</span><p>{research.next}</p><span class="r-tag">Planned</span></div>
-      <ol class="r-notebook">{milestones.map((entry, i) => <li id={entry.id}><div class="r-entry-date"><time datetime={entry.date}>{date(entry.date)}</time><span>NOTE {String(milestones.length-i).padStart(3,"0")}</span></div><article><span class="r-tag">{entry.kind}</span><h3><a href={`#${entry.id}`}>{entry.title}</a></h3><p>{entry.summary}</p><details><summary>Read the mathematical note <span aria-hidden="true">+</span></summary><p>{entry.detail}</p></details></article></li>)}</ol>
+      <ol class="r-notebook">{milestones.map((entry, i) => <li id={entry.id}><div class="r-entry-date"><time datetime={entry.date}>{date(entry.date)}</time><span>NOTE {String(milestones.length-i).padStart(3,"0")}</span></div><article><span class="r-tag">{entry.kind}</span><h3><a href={`#${entry.id}`}>{entry.title}</a></h3><p>{entry.summary}</p><details><summary>Read the mathematical note <span aria-hidden="true">+</span></summary><p>{entry.detail}</p>{entry.sources && <ul class="r-evidence-links">{entry.sources.map(source => <li><a href={source.href}>{source.label} ↗</a></li>)}</ul>}</details></article></li>)}</ol>
       <div class="r-method"><h3>Ambitious with ideas.<br /><em>Exacting with evidence.</em></h3><div><p>This notebook is curated from an ongoing research conversation with ChatGPT Codex. AI assists with constructions, computation, and critique; mathematical claims need explicit reasoning and review.</p><p>Observations, equivalent reformulations, and proofs have different evidential roles. New milestones should include their assumptions, supporting argument or reproducible computation, and remaining limitations.</p><a class="r-link" href="https://github.com/rzglvnd/rzglvnd.github.io/commits/main/src/data/goldbach.ts">View the notebook’s revision history ↗</a></div></div>
     </section>
 
     <section id="references" class="r-section">
-      <p class="r-kicker">05 / Reading & context</p><h2>Built on a long conversation.</h2>
+      <p class="r-kicker">06 / Reading & context</p><h2>Built on a long conversation.</h2>
       <ol class="r-references">{references.map(ref => <li><a href={ref.url} target="_blank" rel="noreferrer">{ref.title} <span aria-hidden="true">↗</span></a><p>{ref.authors}</p><p class="r-small">{ref.note}</p></li>)}</ol>
     </section>
     <div class="r-end"><span class="r-kicker">The notebook continues.</span><a class="r-link" href="/research/">← All research</a></div>

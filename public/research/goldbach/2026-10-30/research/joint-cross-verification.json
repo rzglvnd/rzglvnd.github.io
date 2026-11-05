@@ -1,0 +1,68 @@
+{
+  "status": "Independent exact finite certificate verification; no uniform Goldbach theorem.",
+  "source_file": "joint-cross-search-results.json",
+  "source_sha256": "0119a05faad6be608b41aa9f5207941d949dc7960450563255a9ac10ef68fee6",
+  "target": 1000000,
+  "wheel_cutoff": 7,
+  "wheel_modulus": 210,
+  "safe_states_reconstructed": 99,
+  "observed_states_checked": 89,
+  "moments_checked": 25,
+  "independently_scanned_moments": [
+    47524,
+    29777,
+    29780,
+    8638,
+    17285,
+    8636,
+    1517,
+    4622,
+    4665,
+    1489,
+    12714,
+    7924,
+    8207,
+    2306,
+    4705,
+    3310,
+    17756,
+    11306,
+    11149,
+    3554,
+    6689,
+    3243,
+    4636,
+    2977,
+    2857
+  ],
+  "factored_pair_minorant": {
+    "saved_coefficients_match_expansion": true,
+    "ten_side_states_certified_by_factor_sizes": true,
+    "side_A_H_inequalities_checked": true,
+    "all_100_side_combinations_checked": true
+  },
+  "independent_truth_check_only": {
+    "restricted_prime_pairs": 5382,
+    "signed_margin": 3774
+  },
+  "certificates": [
+    {
+      "objective": "signed",
+      "exact_relaxed_optimum": "-18911/24",
+      "integer_lower_bound": -787,
+      "all_99_state_inequalities_verified": true,
+      "all_25_primal_moments_verified": true,
+      "nonnegative_primal_witness_verified": true,
+      "exact_primal_dual_equality_verified": true
+    },
+    {
+      "objective": "pairs",
+      "exact_relaxed_optimum": "1705/2",
+      "integer_lower_bound": 853,
+      "all_99_state_inequalities_verified": true,
+      "all_25_primal_moments_verified": true,
+      "nonnegative_primal_witness_verified": true,
+      "exact_primal_dual_equality_verified": true
+    }
+  ]
+}
